@@ -1,0 +1,59 @@
+<% include ./partials/navHeader %>
+    <!-- LEAGUES -->
+    <div class="jumbotron">
+    <h1 id="your-leagues-header">Your Leagues<h6 id="click-to-open">(Click to open)</h6></h1>
+    <table class="table table-active table-hover">
+    <thead>
+        <tr>
+        <th scope="col"><h5>League</h5></th>
+        <th scope="col"><h5>Team Name</h5></th>
+        <th scope="col"><h5>Record</h5></th>
+        <th scope="col"><h5>Rank</h5></th>
+        </tr>
+    </thead>
+    <tbody>
+    <% teams.forEach(function(team) { %>
+      <form method="post" action="/league">
+        <tr class="table-light">
+          <td>
+            <button class="open-league-button" type="submit" name="leagueName" value="<%= team.league %>">
+              <%= team.league %>
+              <% leagues.forEach(function(league) { %>
+                <% if (league.name === team.league) { %>
+                  <% if (league.email === email) { %>
+                    (owner)
+                  <% } %>
+                <% } %>
+              <% }) %>
+            </button>
+          </td>
+          <td>
+              <%= team.name %>
+          </td>
+          <td>
+              <%= team.record %>
+          </td>
+          <td>
+              <%= team.rank %>
+          </td>
+        </tr>
+      </form>
+    <% }) %>
+      <form action="/dashboard/new-league" method="POST">
+        <tr class="table-light">
+          <td>
+            <button class="new-league-button" type="submit">
+              <i class="fas fa-plus plus-button"></i>
+            </button> 
+            Create New League
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </form>
+    </tbody>
+    </div>
+</div>
+
+<% include ./partials/footer %>

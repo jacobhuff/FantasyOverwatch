@@ -1,0 +1,33 @@
+{
+  "name": "passport-login",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "Jake",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "crypto": "^1.0.1",
+    "dotenv": "^8.0.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-ejs-layouts": "^2.5.0",
+    "express-session": "^1.16.1",
+    "mongodb": "^3.2.3",
+    "mongoose": "^5.5.5",
+    "nodemailer": "^6.1.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "request": "^2.88.0",
+    "xoauth2": "^1.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  }
+}

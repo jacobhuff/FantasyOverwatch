@@ -1,0 +1,21 @@
+<% include ./partials/navHeader %>
+    <h2>Enter Draft Picks</h4>
+    <% teams.forEach((team) => { %>
+        <div class="draft-card card border-primary mb-3">
+            <h4 class="card-header">
+                <%= team.name %>
+            </h4>
+            <div class="card-body">
+                <% for (let i = 0; i < 20; i++) { %>
+                    <p class="card-text">
+                        <div class="form-group">
+                            <label class="col-form-label" for="inputDefault">Pick #<%= i + 1 %></label>
+                            <input type="text" class="form-control" placeholder="Enter Pick" id="inputDefault">
+                        </div>
+                    </p>
+                <% } %>
+            </div>
+        </div>
+    <% }) %>
+</div>
+<% include ./partials/footer %>

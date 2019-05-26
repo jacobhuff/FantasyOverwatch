@@ -1,0 +1,64 @@
+.container {
+    margin-top: 20px;
+}
+.plus-button:hover {
+    color: #37DD69;
+}
+
+.new-league-button {
+    background-color: transparent;
+    border: none;
+}
+
+#click-to-open, #your-leagues-header {
+    display: inline-block;
+}
+#click-to-open {
+    margin-left: 5px;
+}
+
+.open-league-button {
+    border: none;
+    background-color: transparent;
+    width: 50%;
+    height: 30px;
+    color: #919aa1;
+}
+.open-league-button:hover {
+    text-decoration: underline;
+}
+
+.league-buttons {
+    margin-top: 15px;
+}
+.league-button {
+    margin: 10px;
+}
+.league-text {
+    margin-top: 30px;
+}
+
+.player-card {
+    height: 350px;
+    width: 30%;
+    float: left;
+    margin-left: 3.33%;
+}
+.draft-card {
+    width: 30%;
+    float: left;
+    margin-right: 3.33%;
+}
+.player-group, .player-name, .role-icon {
+    float: left;
+}
+.player-group {
+    width: 50%;
+    margin-bottom: 10px;
+}
+.player-name {
+    width: 80%;
+}
+.role-icon {
+    width: 15%;
+}

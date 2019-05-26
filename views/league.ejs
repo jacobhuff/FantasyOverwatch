@@ -1,0 +1,53 @@
+<% include ./partials/navHeader %>
+        
+         <% if (isOwner && !isActive) { %>
+            <% if (numTeams < 4) { %>
+                <div class="league-text text-center">
+                    <h3>Your league must have at least 4 teams to begin playing!</h3>
+                    <p class="lead">Click the button below to invite a friend!</p>
+                    <a role="button" class="btn btn-outline-secondary" href="/league/invite">Invite to League</a>
+                </div>
+            <% } else if (numTeams < 10) { %>
+                <div class="league-text text-center">
+                    <h3>
+                        You have enough teams to start playing!
+                    </h3>
+                    <p class="lead">
+                        Feel free to continue inviting more friends, or click 
+                        the 'Start League' button below when you are ready to play!</p>
+                    <a role="button" class="btn btn-outline-secondary" href="/league/invite">Invite to League</a>
+                    <a role="button" class="btn btn-outline-secondary" href="/league/start">Start League</a>
+                </div>
+            <% } else if (numTeams === 10) { %>
+                <div class="league-text text-center">
+                    <h3>Your league has reached maximum capacity!</h3>
+                    <p class="lead">Click the button below when you are ready to play!</p>
+                    <a role="button" class="btn btn-outline-secondary" href="/league/start">Start League</a>
+                </div>
+            <% } %>
+        <% } else if (isOwner && isActive) { %>
+        <div class="league-text text-center">
+            <h3>Congratulations on starting your league, now it's time to draft your teams!</h3>
+            <hr class="my-4">
+            <p class="lead">
+                We do not currently support online drafting, so you will have to come
+                back here when you are ready to manually submit your draft results. Below you will find draft resources
+                such as a list of available players, a form to submit your results, and an option to randomize your draft order!
+            </p>
+            <a role="button" class="btn btn-outline-primary" href="/players">Available Players</a>
+            <a role="button" class="btn btn-outline-primary" href="/league/enter-results">Enter Results</a>
+            <a role="button" class="btn btn-outline-primary" href="/league/start">Draft Order</a>
+        </div>
+        <% } else { %>
+            <div class="league-buttons text-center">
+                <a class="league-button btn btn-outline-primary" href="#" role="button">League</a>
+                <a class="league-button btn btn-outline-primary" href="#" role="button">Standings</a>
+                <a class="league-button btn btn-outline-primary" href="#" role="button">Schedule</a>
+                <a class="league-button btn btn-outline-primary" href="#" role="button">My Team</a>
+            </div>
+            <hr class="my-4">
+        <% } %>
+
+</div>
+
+<% include ./partials/footer %>

@@ -1,0 +1,26 @@
+<% include ./partials/navHeader %>
+    <!-- LEAGUES -->
+    <% for (var key in teams) { %>
+        <div class="player-card card border-primary mb-3">
+            <div class="card-header"><%= key %></div>
+            <div class="card-body">
+                <% for (let i = 0; i < teams[key].length; i++) { %>
+                    <div class="player-group">
+                        <% if (teams[key][i][1] === "support") { %>
+                            <img class="role-icon" src="/assets/images/support.png">
+                        <% } else if (teams[key][i][1] === "tank") { %>
+                            <img class="role-icon" src="/assets/images/tank.png">
+                        <% } else if (teams[key][i][1] === "offense") { %>
+                            <img class="role-icon" src="/assets/images/offense.png">
+                        <% } %>
+                        <p class="player-name card-text">
+                            <%= teams[key][i][0] %>
+                        </p>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    <% } %>
+</div>
+
+<% include ./partials/footer %>

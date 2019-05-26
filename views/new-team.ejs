@@ -1,0 +1,29 @@
+<% include ./partials/navHeader %>
+
+  <div class="row mt-5">
+    <div class="col-md-6 m-auto">
+      <div class="card card-body">
+        <h1 class="text-center mb-3">Create your team!</h1>
+        <% include ./partials/messages %>
+        <form action="/league/create-team" method="POST">
+          <div class="form-group">
+            <label for="name">Team Name</label>
+            <input
+              type="name"
+              id="name"
+              name="name"
+              class="form-control"
+              placeholder="Enter Team Name"
+              value="<%= typeof name != 'undefined' ? name : '' %>"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">
+            Create Team
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include ./partials/footer %>
