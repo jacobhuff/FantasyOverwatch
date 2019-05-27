@@ -6,7 +6,7 @@ const League = require('../models/League');
 const Team = require('../models/Team');
 const mailer = require('../config/mailer');
 const setAvailable = require('../api/setAvailable.js');
-const initializeLeague = require('../routes/initializeLeague.js');
+const initializeLeague = require('../api/initializeLeague.js');
 
 // League Dashboard
 router.get('/', ensureAuthenticated, (req, res) => {
