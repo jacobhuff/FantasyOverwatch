@@ -25,6 +25,9 @@ const TeamSchema = new mongoose.Schema({
     rank: {
         type: String,
         required: true
+    },
+    players: {
+        type: Array,
     }
 });
 

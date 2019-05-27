@@ -44,6 +44,16 @@
     float: left;
     margin-left: 3.33%;
 }
+.player-card-draft {
+    height: 500px;
+    width: 48%;
+    float: left;
+    margin-left: 1%;
+}
+.player-card-choose {
+    width: 40%;
+    margin: 0 auto;
+}
 .draft-card {
     width: 30%;
     float: left;
@@ -56,9 +66,58 @@
     width: 50%;
     margin-bottom: 10px;
 }
+.player-group-draft {
+    width: 100%;
+    margin-bottom: 5px;
+}
 .player-name {
     width: 80%;
 }
 .role-icon {
     width: 15%;
+}
+.player-name-draft {
+    width: 100%;
+    height: 25px;
+    margin-bottom: 10px;
+}
+.names-draft:hover {
+    background-color: #ced4da;
+}
+.names-draft, .names-draft-complete {
+    width: 100%;
+    height: 100%;
+    background-color: #f7f7f9;
+    border: none;
+    border-right: 3px solid #ced4da;
+}
+.teams-container, .players-container {
+    float: left;
+}
+.teams-container {
+    width: 60%;
+}
+.players-container {
+    width: 40%;
+}
+#player-pick {
+    height: 25px;
+}
+#choose-team-title {
+    margin: 0 auto;
+    text-align: center;
+}
+#choose-team-player {
+    text-decoration: underline;
+}
+.draft-form-title {
+    height: 42px;
+}
+.submit-draft-form {
+    height: 50px;
+    width: 98%;
+}
+
+.submit-draft-button {
+    float: right;
 }

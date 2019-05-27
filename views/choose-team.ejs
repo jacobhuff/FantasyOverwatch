@@ -1,0 +1,20 @@
+<% include ./partials/navHeader %>
+    <div id="choose-team-title">
+        <h4>Select a team to place <span id="choose-team-player"><%= player %></span> on their roster</h4>
+    </div>
+    <hr class="my-4">
+    <div class="player-card-choose card border-primary mb-3">
+        <h4 class="card-header">Teams</h4>
+        <div class="player-group-draft card-body">
+            <% for (let j = 0; j < teams.length; j++) { %>
+            <form class="player-name-draft" action="/league/enter-results/choose-team" method="POST">
+                <button type="submit" name="choose-team-button" value="<%= teams[j] %>" class="names-draft card-text">
+                    <%= teams[j] %>
+                </button>
+            </form>
+            <% } %>
+        </div>
+    </div>
+
+</div>
+<% include ./partials/footer %>

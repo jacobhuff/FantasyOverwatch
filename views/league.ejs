@@ -1,6 +1,5 @@
 <% include ./partials/navHeader %>
-        
-         <% if (isOwner && !isActive) { %>
+         <% if (isOwner && !isActive && !hasDrafted) { %>
             <% if (numTeams < 4) { %>
                 <div class="league-text text-center">
                     <h3>Your league must have at least 4 teams to begin playing!</h3>
@@ -25,7 +24,7 @@
                     <a role="button" class="btn btn-outline-secondary" href="/league/start">Start League</a>
                 </div>
             <% } %>
-        <% } else if (isOwner && isActive) { %>
+        <% } else if (isOwner && isActive && !hasDrafted) { %>
         <div class="league-text text-center">
             <h3>Congratulations on starting your league, now it's time to draft your teams!</h3>
             <hr class="my-4">
@@ -38,6 +37,14 @@
             <a role="button" class="btn btn-outline-primary" href="/league/enter-results">Enter Results</a>
             <a role="button" class="btn btn-outline-primary" href="/league/start">Draft Order</a>
         </div>
+        <% } else if (isOwner && isActive && hasDrafted) { %>
+            <div class="league-buttons text-center">
+                <a class="league-button btn btn-outline-primary" href="#" role="button">My Team</a>
+                <a class="league-button btn btn-outline-primary" href="#" role="button">Matchup</a>
+                <a class="league-button btn btn-outline-primary" href="#" role="button">Standings</a>
+                <a class="league-button btn btn-outline-primary" href="#" role="button">Schedule</a>
+            </div>
+            <hr class="my-4">
         <% } else { %>
             <div class="league-buttons text-center">
                 <a class="league-button btn btn-outline-primary" href="#" role="button">League</a>
@@ -47,7 +54,6 @@
             </div>
             <hr class="my-4">
         <% } %>
-
 </div>
 
 <% include ./partials/footer %>

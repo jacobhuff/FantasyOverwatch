@@ -22,6 +22,7 @@ mongoose.connect(db, { useNewUrlParser: true })
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.log(err));
 mongoose.set('useFindAndModify', false);
+
 // EJS
 app.set('view engine', 'ejs');
 
@@ -58,8 +59,14 @@ app.use('/league', require('./routes/league.js'));
 app.use('/players', require('./routes/players.js'));
 
 // UPDATE PLAYERS IN DATABASE
-// const players = require('./api/getPlayers.js');
-// players();
+// const getOwlSchedule = require('./routes/getOwlSchedule.js');
+// getOwlSchedule();
+// const getPlayers = require('./api/getPlayers.js');
+// getPlayers();
+// const setAvailable = require('./api/setAvailable.js');
+// setAvailable("Test");
+// const initializeLeague = require('./routes/initializeLeague.js');
+// initializeLeague("Test", new Date().getTime());
 
 const PORT = process.env.PORT || 5000;
 

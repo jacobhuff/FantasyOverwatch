@@ -28,6 +28,19 @@ const LeagueSchema = new mongoose.Schema({
     active: {
         type: Boolean,
         required: true
+    },
+    hasDrafted: {
+        type: Boolean,
+        required: true
+    },
+    availablePlayers: {
+        type: Array
+    },
+    startingStage: {
+        type: Number
+    },
+    schedule: {
+        type: Array
     }
 });
 

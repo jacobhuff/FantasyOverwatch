@@ -1,7 +1,9 @@
 <% include ./partials/navHeader %>
-    <h2>Enter Draft Picks</h4>
+<% var isCompleted = true %>
+    <div class="teams-container">
+    <h4 class="draft-form-title">Players will appear here after selection</h4>
     <% teams.forEach((team) => { %>
-        <div class="draft-card card border-primary mb-3">
+        <div class="draft-card text-white bg-primary mb-3">
             <h4 class="card-header">
                 <%= team.name %>
             </h4>
@@ -9,13 +11,52 @@
                 <% for (let i = 0; i < 20; i++) { %>
                     <p class="card-text">
                         <div class="form-group">
-                            <label class="col-form-label" for="inputDefault">Pick #<%= i + 1 %></label>
-                            <input type="text" class="form-control" placeholder="Enter Pick" id="inputDefault">
+                            <label class="col-form-label" for="">Pick #<%= i + 1 %></label>
+                            <% if (team.players[i]) { %>
+                                <input type="text" class="form-control" value="<%= team.players[i] %>" id="player-pick" disabled>
+                            <% } else { %>
+                                <% isCompleted = false %>
+                                <input type="text" class="form-control" placeholder="" id="player-pick" disabled></p>
+                            <% } %>
                         </div>
                     </p>
                 <% } %>
             </div>
         </div>
     <% }) %>
+    </div>
+    <div class="players-container">
+        <% if (isCompleted) { %>
+            <form class="submit-draft-form" action="/league/enter-results/submit" method="POST">
+                <button type="submit" class="submit-draft-button btn btn-success">
+                    Submit
+                </button>
+            </form>
+        <% } else { %>
+            <h4>Select players below</h4>
+        <% } %>
+        <% for (var key in owlTeams) { %>
+            <div class="player-card-draft card border-primary mb-3">
+                <div class="card-header"><%= key %></div>
+                <div class="player-group-draft card-body">
+                    <% for (let j = 0; j < owlTeams[key].length; j++) { %>
+                        <% if (!isCompleted) { %>
+                            <form class="player-name-draft" action="/league/enter-results" method="POST">
+                                <button type="submit" name="player-button" value="<%= owlTeams[key][j] %>" class="names-draft card-text">
+                                    <%= owlTeams[key][j] %>
+                                </button>
+                            </form>
+                        <% } else { %>
+                            <div class="player-name-draft">
+                                <div name="player-button" value="<%= owlTeams[key][j] %>" class="names-draft-complete card-text">
+                                    <%= owlTeams[key][j] %>
+                                </div>
+                            </div>
+                        <% } %>
+                    <% } %>
+                </div>
+            </div>
+        <% } %>
+    </div>
 </div>
 <% include ./partials/footer %>
