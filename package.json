@@ -26,6 +26,7 @@
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
     "request": "^2.88.0",
+    "roundrobin": "^1.0.3",
     "xoauth2": "^1.2.0"
   },
   "devDependencies": {

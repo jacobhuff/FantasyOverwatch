@@ -39,18 +39,18 @@
         </div>
         <% } else if (isOwner && isActive && hasDrafted) { %>
             <div class="league-buttons text-center">
-                <a class="league-button btn btn-outline-primary" href="#" role="button">My Team</a>
-                <a class="league-button btn btn-outline-primary" href="#" role="button">Matchup</a>
-                <a class="league-button btn btn-outline-primary" href="#" role="button">Standings</a>
-                <a class="league-button btn btn-outline-primary" href="#" role="button">Schedule</a>
+                <a class="league-button btn btn-outline-primary" href="/league/team" role="button">My Team</a>
+                <a class="league-button btn btn-outline-primary" href="/league/matchup" role="button">Matchup</a>
+                <a class="league-button btn btn-outline-primary" href="/league/standings" role="button">Standings</a>
+                <a class="league-button btn btn-outline-primary" href="/league/schedule" role="button">Schedule</a>
             </div>
             <hr class="my-4">
         <% } else { %>
             <div class="league-buttons text-center">
-                <a class="league-button btn btn-outline-primary" href="#" role="button">League</a>
-                <a class="league-button btn btn-outline-primary" href="#" role="button">Standings</a>
-                <a class="league-button btn btn-outline-primary" href="#" role="button">Schedule</a>
-                <a class="league-button btn btn-outline-primary" href="#" role="button">My Team</a>
+                <a class="league-button btn btn-outline-primary" href="/league/team" role="button">My Team</a>
+                <a class="league-button btn btn-outline-primary" href="/league/standings" role="button">Matchup</a>
+                <a class="league-button btn btn-outline-primary" href="/league/schedule" role="button">Standings</a>
+                <a class="league-button btn btn-outline-primary" href="/league/team" role="button">Schedule</a>
             </div>
             <hr class="my-4">
         <% } %>

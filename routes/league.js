@@ -7,6 +7,7 @@ const Team = require('../models/Team');
 const mailer = require('../config/mailer');
 const setAvailable = require('../api/setAvailable.js');
 const initializeLeague = require('../api/initializeLeague.js');
+const getCurrentWeek = require('../api/getCurrentWeek.js');
 
 // League Dashboard
 router.get('/', ensureAuthenticated, (req, res) => {
@@ -239,4 +240,27 @@ router.get('/submit', ensureAuthenticated, (req, res) => {
     });
 });
 
+router.get('/schedule', ensureAuthenticated, (req, res) => {
+    League.findOne({name: req.session.currLeague}, (err, league) => {
+        // get league's current week
+        getCurrentWeek(league.startingStage, new Date().getTime(), res, req, handleReroute);
+    });
+});
+function handleReroute(currWeek, res, req) {
+    // get matchups for current week from League
+    League.findOne({name: req.session.currLeague}, (err, league) => {
+        if (err) { console.log(err) }
+
+        let matches;
+        for (let i = 0; i < league.schedule.length; i++) {
+            if (currWeek - 1 === i) {
+                matches = league.schedule[i];
+            }
+        }
+        console.log(matches);
+        res.render('schedule', {
+            matches: matches
+        });
+    });
+}
 module.exports = router;

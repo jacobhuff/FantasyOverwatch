@@ -1,6 +1,8 @@
 const request = require('request');
 const League = require('../models/League');
-const owlSchedule = require('../models/owlSchedule');
+const Team = require('../models/Team');
+const robin = require('roundrobin');
+var numStages = 4;
 
 module.exports = function initializeLeague(leagueName, leagueStartTime) {
     request('https://api.overwatchleague.com/schedule', {json: true}, (err, res, body) => {
@@ -30,10 +32,33 @@ module.exports = function initializeLeague(leagueName, leagueStartTime) {
             });
         });
 
-        let startingStage = findStartingStage(leagueStartTime, startTimes, stageStartTimes);
+        var startingStage = findStartingStage(leagueStartTime, startTimes, stageStartTimes);
+        var numWeeks = ((numStages + 1) - startingStage) * 4;
         League.findOneAndUpdate({name: leagueName}, {$set: {startingStage: startingStage}}, (err, doc) => {
             if (err) { console.log(err) }
             console.log("Starting Stage Inserted");
+        });
+
+        Team.find({league: leagueName}, (err, teams) => {
+            let arrayofTeamNames = [];
+            for (let i = 0; i < teams.length; i++) {
+                arrayofTeamNames.push(teams[i].name);
+            }
+            let roundRobin = robin(4, arrayofTeamNames);
+            let remainingWeeks = numWeeks - roundRobin.length;
+            let index = 0;
+            for (let j = 0; j < remainingWeeks; j++) {
+                roundRobin.push(roundRobin[index]);
+                index++;
+                if (index === roundRobin.length - 1) {
+                    index = 0;
+                }
+            }
+            League.findOneAndUpdate({name: leagueName}, {$set: {schedule: roundRobin}}, (err, doc) => {
+                if (err) { console.log(err) }
+
+                console.log("League Schedule has been created");
+            });
         });
     });
 }

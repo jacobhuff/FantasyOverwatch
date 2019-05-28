@@ -59,13 +59,13 @@ app.use('/league', require('./routes/league.js'));
 app.use('/players', require('./routes/players.js'));
 
 // UPDATE PLAYERS IN DATABASE
-// const getOwlSchedule = require('./routes/getOwlSchedule.js');
+// const getOwlSchedule = require('./api/getOwlSchedule.js');
 // getOwlSchedule();
 // const getPlayers = require('./api/getPlayers.js');
 // getPlayers();
 // const setAvailable = require('./api/setAvailable.js');
 // setAvailable("Test");
-// const initializeLeague = require('./routes/initializeLeague.js');
+// const initializeLeague = require('./api/initializeLeague.js');
 // initializeLeague("Test", new Date().getTime());
 
 const PORT = process.env.PORT || 5000;
