@@ -1,8 +1,14 @@
 const mongoose = require('mongoose');
 
 const owlScheduleSchema = new mongoose.Schema({
-    schedule: {
+    weeks: {
         type: Array
+    },
+    currentStage: {
+        type: Number
+    },
+    currentWeek: {
+        type: Number
     }
 });
 

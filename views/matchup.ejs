@@ -1,0 +1,80 @@
+<% include ./partials/matchupsHeader %>
+<div class="matchups-container">
+    <div class="your-team-matchup">
+        <h4><%= yourTeam.name %></h4>
+        <table class="table matchup-table">
+        
+        <thead>
+            <tr class="table-success">
+            <th scope="col" class="matchup-header">Player</th>
+            <th scope="col" class="matchup-header">Damage</th>
+            <th scope="col" class="matchup-header">Eliminations</th>
+            <th scope="col" class="matchup-header">Healing</th>
+            <th scope="col" class="matchup-header">Total</th>
+            </tr>
+        </thead>
+        <% yourPlayers.forEach((player) => { %>
+            <tbody>
+                <tr class="table-success matchup-body">
+                <th class="matchup-text" scope="row"><%= player.name %></th>
+                <% if (player.damage) { %>
+                    <td class="matchup-text"><%= player.damage %></td>
+                <% } else { %>
+                    <td class="matchup-text">0.0</td> 
+                <% } %>
+                <% if (player.eliminations) { %>
+                    <td class="matchup-text"><%= player.eliminations %></td>
+                <% } else { %>
+                    <td class="matchup-text">0.0</td> 
+                <% } %>
+                <% if (player.healing) { %>
+                    <td class="matchup-text"><%= player.healing %></td>
+                <% } else { %>
+                    <td class="matchup-text">0.0</td> 
+                <% } %>
+                <td class="matchup-text"><%= player.points %></td>
+                </tr>
+            </tbody>  
+        <% }) %>
+        </table>
+    </div>
+
+    <div class="their-team-matchup">
+        <h4><%= theirTeam.name %></h4>
+        <table class="table matchup-table">
+        <thead>
+            <tr class="table-danger">
+            <th scope="col" class="matchup-header">Player</th>
+            <th scope="col" class="matchup-header">Damage</th>
+            <th scope="col" class="matchup-header">Eliminations</th>
+            <th scope="col" class="matchup-header">Healing</th>
+            <th scope="col" class="matchup-header">Total</th>
+            </tr>
+        </thead>
+        <% theirPlayers.forEach((player) => { %>
+            <tbody>
+                <tr class="table-danger matchup-body">
+                <th class="matchup-text" scope="row"><%= player.name %></th>
+                <% if (player.damage) { %>
+                    <td class="matchup-text"><%= player.damage %></td>
+                <% } else { %>
+                    <td class="matchup-text">0.0</td> 
+                <% } %>
+                <% if (player.eliminations) { %>
+                    <td class="matchup-text"><%= player.eliminations %></td>
+                <% } else { %>
+                    <td class="matchup-text">0.0</td> 
+                <% } %>
+                <% if (player.healing) { %>
+                    <td class="matchup-text"><%= player.healing %></td>
+                <% } else { %>
+                    <td class="matchup-text">0.0</td> 
+                <% } %>
+                <td class="matchup-text"><%= player.points %></td>
+                </tr>
+            </tbody>  
+        <% }) %>
+        </table>
+    </div>  
+</div>
+<% include ./partials/footer %>

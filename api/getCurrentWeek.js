@@ -7,10 +7,10 @@ module.exports = function getCurrentWeek(startingStage, currDate, res, req, call
         if (err) { console.log(err) }
         var isDone = false;
         var currWeek;
-        body.data.stages.forEach(stage => {
+        body.data.stages.forEach((stage) => {
             stage.weeks.forEach((week) => {
                 if (stage.name !== "All-Stars" && !isDone) {
-                    if (week.startDate > currDate) {
+                    if (week.endDate > currDate) {
                         let currStageNum = parseInt(stage.name[stage.name.length - 1], 10);
                         let currWeekNum = parseInt(week.name[week.name.length - 1], 10);
                         currWeek = ((currStageNum - startingStage) * 4) + currWeekNum;

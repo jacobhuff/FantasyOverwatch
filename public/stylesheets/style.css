@@ -4,7 +4,6 @@
 .plus-button:hover {
     color: #37DD69;
 }
-
 .new-league-button {
     background-color: transparent;
     border: none;
@@ -120,4 +119,45 @@
 
 .submit-draft-button {
     float: right;
+}
+.select-week-form {
+    width: 20%;
+}
+.schedule-table {
+    margin-top: 50px;
+}
+.schedule-text, .starters-header {
+    font-size: 15px;
+    color: black;
+}
+.starters-table, .bench-table, .matchup-table {
+    color: black;   
+}
+.bench-table, .matchup-table {
+    margin-bottom: 100px;
+}
+.starters-button {
+    background-color: transparent;
+    border: none;
+}
+#myteam-info {
+    text-align: center;
+}
+.matchup-table {
+    margin: 0 auto;
+    width: 80%;
+    margin-bottom: 100px;
+}
+.matchup-text, .matchup-header {
+    text-align: center;
+}
+.matchups-container {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+.your-team-matchup, .their-team-matchup {
+    width: 50%;
+    float: left;
+    text-align: center;
 }

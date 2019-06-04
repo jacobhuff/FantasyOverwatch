@@ -4,6 +4,7 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
 const path = require('path');
+
 require('dotenv').config();
 
 const app = express();
@@ -58,9 +59,13 @@ app.use('/users', require('./routes/users.js'));
 app.use('/league', require('./routes/league.js'));
 app.use('/players', require('./routes/players.js'));
 
-// UPDATE PLAYERS IN DATABASE
-// const getOwlSchedule = require('./api/getOwlSchedule.js');
-// getOwlSchedule();
+// UPDATE PLAYER STATS
+const updateMatchIds = require('./api/updateMatchIds.js');
+const updatePlayerStats = require('./api/updatePlayerStats.js');
+updateMatchIds(updatePlayerStats);
+
+// const setOwlWeeks = require('./api/setOwlWeeks.js');
+// setOwlWeeks();
 // const getPlayers = require('./api/getPlayers.js');
 // getPlayers();
 // const setAvailable = require('./api/setAvailable.js');

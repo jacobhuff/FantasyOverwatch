@@ -1,0 +1,106 @@
+<% include ./partials/navHeader %>
+    <div class="league-buttons text-center">
+        <a class="league-button btn btn-outline-primary" href="/league/team" role="button">My Team</a>
+        <a class="league-button btn btn-outline-primary" href="/league/matchup" role="button">Matchup</a>
+        <a class="league-button btn btn-outline-primary" href="/league/standings" role="button">Standings</a>
+        <a class="league-button btn btn-outline-primary" href="/league/schedule" role="button">Schedule</a>
+    </div>
+    <hr class="my-4">
+    <% if (!isChanging) { %>
+        <h4 id="myteam-info">Click on the icon next to a player's name to move them into or out of the lineup</h4>
+        <hr class="my-4">
+    <% } else { %>
+        <h4 id="myteam-info">Select the player you want to replace them with</h4>
+        <hr class="my-4">
+    <% } %>
+    <h3 id="starters-title">Starters</h3>
+    <% if (isChanging) { %>
+        <form action="/league/team/changing" method="POST">
+    <% } else { %>
+        <form action="/league/team/starter" method="POST">
+    <% } %>
+        <table class="table starters-table">
+            <% if (starter) { %> 
+                <% for (let i = 0; i < 9; i++) { %>
+                    <% if (players[i] === starter) { %> 
+                        <tbody>
+                            <tr class="table-success players-body">
+                            <% if (isChanging) { %>
+                    
+                            <% } else { %>
+                                <th>
+                                    <button type="submit" name="selectedPlayer" value="<%= players[i] %>" class="starters-button"><i class="fas fa-bars"></i></button>
+                                </th>
+                            <% } %>
+                            <th class="players-text" scope="row"><%= players[i] %></th>
+                            <td class="players-text">Player Team</td>
+                            <td class="players-text">vs.</td>
+                            <td class="players-text">Opponent Team</td>
+                            </tr>
+                        </tbody>
+                    <% } %>
+                <% } %>
+            <% } else { %>
+                <% for (let i = 0; i < 9; i++) { %>
+                    <tbody>
+                        <tr class="table-success players-body">
+                        <th>
+                            <button type="submit" name="selectedPlayer" value="<%= players[i] %>" class="starters-button"><i class="fas fa-bars"></i></button>
+                        </th>
+                        <th class="players-text" scope="row"><%= players[i] %></th>
+                        <td class="players-text">Player Team</td>
+                        <td class="players-text">vs.</td>
+                        <td class="players-text">Opponent Team</td>
+                        </tr>
+                    </tbody>
+                <% } %>
+            <% } %>
+        </table>
+    </form>
+    <h4 id="sbench-title">Bench</h4>
+    <% if (isChanging) { %>
+        <form action="/league/team/changing" method="POST">
+    <% } else { %>
+        <form action="/league/team/bench" method="POST">
+    <% } %>
+        <table class="table bench-table">
+            <% if (bench) { %> 
+                <% for (let j = 9; j < players.length; j++) { %>
+                    <% if (players[j] === bench) { %> 
+                        <tbody>
+                            <tr class="table-danger players-body">
+                            <% if (isChanging) { %>
+                            
+                            <% } else { %>
+                                <th>
+                                    <button type="submit" name="selectedPlayer" value="<%= players[j] %>" class="starters-button"><i class="fas fa-bars"></i></button>
+                                </th>
+                            <% } %>
+                            <th class="players-text" scope="row"><%= players[j] %></th>
+                            <td class="players-text">Player Team</td>
+                            <td class="players-text">vs.</td>
+                            <td class="players-text">Opponent Team</td>
+                            </tr>
+                        </tbody>
+                    <% } %>
+                <% } %>
+            <% } else { %>
+                <% for (let j = 9; j < players.length; j++) { %>
+                    <tbody>
+                        <tr class="table-danger players-body">
+                        <th>
+                            <button type="submit" name="selectedPlayer" value="<%= players[j] %>" class="starters-button"><i class="fas fa-bars"></i></button>
+                        </th>
+                        <th class="players-text" scope="row"><%= players[j] %></th>
+                        <td class="players-text">Player Team</td>
+                        <td class="players-text">vs.</td>
+                        <td class="players-text">Opponent Team</td>
+                        </tr>
+                    </tbody>
+                <% } %>
+            <% } %>
+        </table>
+    </form>
+
+</div>
+<% include ./partials/footer %>

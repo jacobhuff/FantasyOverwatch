@@ -4,7 +4,7 @@ const Player = require('../models/Player');
 module.exports = function getPlayers() {
     request('https://api.overwatchleague.com/players', {json: true}, (err, res, body) => {
         if (err) { console.log(err) }
-        body.content.forEach(player => {
+        body.content.forEach((player) => {
             
             // store player info
             let name = player.name;
