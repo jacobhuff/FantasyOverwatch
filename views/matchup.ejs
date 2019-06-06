@@ -1,5 +1,30 @@
 <% include ./partials/matchupsHeader %>
 <div class="matchups-container">
+    <div class="league-buttons text-center">
+        <a class="league-button btn btn-outline-primary" href="/league/team" role="button">My Team</a>
+        <a class="league-button btn btn-outline-primary" href="/league/matchup" role="button">Matchup</a>
+        <a class="league-button btn btn-outline-primary" href="/league/standings" role="button">Standings</a>
+        <a class="league-button btn btn-outline-primary" href="/league/schedule" role="button">Schedule</a>
+    </div>
+    <form action="/league/matchup" method="POST">
+        <div class="form-group select-matchup-form">
+            <label for="selectWeek">Select Week</label>
+            <select onchange="this.form.submit()" name="selectedWeek" class="form-control" id="selectWeek">
+                <% for (let i = 1; i < numWeeks + 1; i++) { %>
+                    <% if (i == currWeek) { %>
+                        <option value="<%= currWeek %>" selected>Week <%= currWeek %></option>
+                    <% } else { %>
+                        <option value="<%= i %>">Week <%= i %></option>
+                    <% } %>
+                <% } %>
+            </select>
+        </div>    
+    </form>
+
+    <h4 class="text-center"><%= startTime %> - <%= endTime %></h4>
+
+    <hr class="my-4">
+    
     <div class="your-team-matchup">
         <h4><%= yourTeam.name %></h4>
         <table class="table matchup-table">
@@ -13,29 +38,38 @@
             <th scope="col" class="matchup-header">Total</th>
             </tr>
         </thead>
-        <% yourPlayers.forEach((player) => { %>
+
+        <% for (let i = 0; i < yourPlayers.length; i++) { %>
             <tbody>
                 <tr class="table-success matchup-body">
-                <th class="matchup-text" scope="row"><%= player.name %></th>
-                <% if (player.damage) { %>
-                    <td class="matchup-text"><%= player.damage %></td>
+                <th class="matchup-text" scope="row"><%= yourPlayers[i].name %></th>
+                <% if (yourPlayers[i].damage) { %>
+                    <td class="matchup-text"><%= yourPlayers[i].damage %></td>
                 <% } else { %>
                     <td class="matchup-text">0.0</td> 
                 <% } %>
-                <% if (player.eliminations) { %>
-                    <td class="matchup-text"><%= player.eliminations %></td>
+                <% if (yourPlayers[i].eliminations) { %>
+                    <td class="matchup-text"><%= yourPlayers[i].eliminations %></td>
                 <% } else { %>
                     <td class="matchup-text">0.0</td> 
                 <% } %>
-                <% if (player.healing) { %>
-                    <td class="matchup-text"><%= player.healing %></td>
+                <% if (yourPlayers[i].healing) { %>
+                    <td class="matchup-text"><%= yourPlayers[i].healing %></td>
                 <% } else { %>
                     <td class="matchup-text">0.0</td> 
                 <% } %>
-                <td class="matchup-text"><%= player.points %></td>
+                <td class="matchup-text"><%= yourPlayers[i].points %></td>
                 </tr>
             </tbody>  
-        <% }) %>
+        <% } %>
+        <tbody>
+            <tr class="table-success matchup-body">
+            <th class="total-text" scope="row">Total</th>
+            <td class="matchup-text"><%= yourPlayers.totalDamage %></td>
+            <td class="matchup-text"><%= yourPlayers.totalElims %></td>
+            <td class="matchup-text"><%= yourPlayers.totalHealing %></td>
+            <td class="matchup-text"><%= yourPlayers.totalPoints %></td>
+        </tbody>
         </table>
     </div>
 
@@ -51,29 +85,37 @@
             <th scope="col" class="matchup-header">Total</th>
             </tr>
         </thead>
-        <% theirPlayers.forEach((player) => { %>
+        <% for (let j = 0; j < theirPlayers.length; j++) { %>
             <tbody>
                 <tr class="table-danger matchup-body">
-                <th class="matchup-text" scope="row"><%= player.name %></th>
-                <% if (player.damage) { %>
-                    <td class="matchup-text"><%= player.damage %></td>
+                <th class="matchup-text" scope="row"><%= theirPlayers[j].name %></th>
+                <% if (theirPlayers[j].damage) { %>
+                    <td class="matchup-text"><%= theirPlayers[j].damage %></td>
                 <% } else { %>
                     <td class="matchup-text">0.0</td> 
                 <% } %>
-                <% if (player.eliminations) { %>
-                    <td class="matchup-text"><%= player.eliminations %></td>
+                <% if (theirPlayers[j].eliminations) { %>
+                    <td class="matchup-text"><%= theirPlayers[j].eliminations %></td>
                 <% } else { %>
                     <td class="matchup-text">0.0</td> 
                 <% } %>
-                <% if (player.healing) { %>
-                    <td class="matchup-text"><%= player.healing %></td>
+                <% if (theirPlayers[j].healing) { %>
+                    <td class="matchup-text"><%= theirPlayers[j].healing %></td>
                 <% } else { %>
                     <td class="matchup-text">0.0</td> 
                 <% } %>
-                <td class="matchup-text"><%= player.points %></td>
+                <td class="matchup-text"><%= theirPlayers[j].points %></td>
                 </tr>
             </tbody>  
-        <% }) %>
+        <% } %>
+        <tbody>
+            <tr class="table-danger matchup-body">
+            <th class="total-text" scope="row">Total</th>
+            <td class="matchup-text"><%= theirPlayers.totalDamage %></td>
+            <td class="matchup-text"><%= theirPlayers.totalElims %></td>
+            <td class="matchup-text"><%= theirPlayers.totalHealing %></td>
+            <td class="matchup-text"><%= theirPlayers.totalPoints %></td>
+        </tbody>
         </table>
     </div>  
 </div>

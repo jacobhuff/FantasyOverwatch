@@ -10,7 +10,6 @@ module.exports = async function updatePlayerStats(matchIds, players, newUpdatedS
 }
 
 function makeRequests(urls, players, playerStats, newUpdatedStage, newUpdatedWeek, callback) {
-    console.log("urls left: " + urls.length);
     if (urls.length !== 0) {
         let urlItem = urls.pop();
         let url = urlItem[0];
@@ -102,7 +101,5 @@ function getUrls(matchIds) {
 function savePlayerStats(playerStats, newUpdatedStage, newUpdatedWeek) {
     Stats.findOneAndUpdate({}, {$set: {stats: playerStats, lastUpdatedStage: newUpdatedStage, lastUpdatedWeek: newUpdatedWeek}}, (err, doc) => {
         if (err) { console.log(err) }
-
-        console.log("Player Stats Updated!");
     });
 }

@@ -42,7 +42,7 @@ module.exports = function initializeLeague(leagueName, leagueStartTime) {
         Team.find({league: leagueName}, (err, teams) => {
             let arrayofTeamNames = [];
             for (let i = 0; i < teams.length; i++) {
-                arrayofTeamNames.push(teams[i].name);
+                arrayofTeamNames.push(teams[i].name);                
             }
             let roundRobin = robin(4, arrayofTeamNames);
             let remainingWeeks = numWeeks - roundRobin.length;
@@ -54,6 +54,7 @@ module.exports = function initializeLeague(leagueName, leagueStartTime) {
                     index = 0;
                 }
             }
+            
             League.findOneAndUpdate({name: leagueName}, {$set: {schedule: roundRobin}}, (err, doc) => {
                 if (err) { console.log(err) }
 

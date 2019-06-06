@@ -41,6 +41,9 @@ const LeagueSchema = new mongoose.Schema({
     },
     schedule: {
         type: Array
+    },
+    results: {
+        type: Array
     }
 });
 

@@ -13,6 +13,8 @@
         <h4 id="myteam-info">Select the player you want to replace them with</h4>
         <hr class="my-4">
     <% } %>
+    <h5 class="text-center"><%= startTime %> - <%= endTime %></h5>
+    <hr class="my-4">
     <h3 id="starters-title">Starters</h3>
     <% if (isChanging) { %>
         <form action="/league/team/changing" method="POST">
@@ -22,7 +24,7 @@
         <table class="table starters-table">
             <% if (starter) { %> 
                 <% for (let i = 0; i < 9; i++) { %>
-                    <% if (players[i] === starter) { %> 
+                    <% if (players[i][0] === starter) { %> 
                         <tbody>
                             <tr class="table-success players-body">
                             <% if (isChanging) { %>
@@ -32,10 +34,8 @@
                                     <button type="submit" name="selectedPlayer" value="<%= players[i] %>" class="starters-button"><i class="fas fa-bars"></i></button>
                                 </th>
                             <% } %>
-                            <th class="players-text" scope="row"><%= players[i] %></th>
-                            <td class="players-text">Player Team</td>
-                            <td class="players-text">vs.</td>
-                            <td class="players-text">Opponent Team</td>
+                            <th class="players-text" scope="row"><%= players[i][0] %></th>
+                            <td class="players-text"><%= players[i][1] %></td>
                             </tr>
                         </tbody>
                     <% } %>
@@ -47,10 +47,8 @@
                         <th>
                             <button type="submit" name="selectedPlayer" value="<%= players[i] %>" class="starters-button"><i class="fas fa-bars"></i></button>
                         </th>
-                        <th class="players-text" scope="row"><%= players[i] %></th>
-                        <td class="players-text">Player Team</td>
-                        <td class="players-text">vs.</td>
-                        <td class="players-text">Opponent Team</td>
+                        <th class="players-text" scope="row"><%= players[i][0] %></th>
+                        <td class="players-text"><%= players[i][1] %></td>
                         </tr>
                     </tbody>
                 <% } %>
@@ -66,7 +64,7 @@
         <table class="table bench-table">
             <% if (bench) { %> 
                 <% for (let j = 9; j < players.length; j++) { %>
-                    <% if (players[j] === bench) { %> 
+                    <% if (players[j][0] === bench) { %> 
                         <tbody>
                             <tr class="table-danger players-body">
                             <% if (isChanging) { %>
@@ -76,10 +74,8 @@
                                     <button type="submit" name="selectedPlayer" value="<%= players[j] %>" class="starters-button"><i class="fas fa-bars"></i></button>
                                 </th>
                             <% } %>
-                            <th class="players-text" scope="row"><%= players[j] %></th>
-                            <td class="players-text">Player Team</td>
-                            <td class="players-text">vs.</td>
-                            <td class="players-text">Opponent Team</td>
+                            <th class="players-text" scope="row"><%= players[j][0] %></th>
+                            <td class="players-text"><%= players[j][1] %></td>
                             </tr>
                         </tbody>
                     <% } %>
@@ -91,10 +87,8 @@
                         <th>
                             <button type="submit" name="selectedPlayer" value="<%= players[j] %>" class="starters-button"><i class="fas fa-bars"></i></button>
                         </th>
-                        <th class="players-text" scope="row"><%= players[j] %></th>
-                        <td class="players-text">Player Team</td>
-                        <td class="players-text">vs.</td>
-                        <td class="players-text">Opponent Team</td>
+                        <th class="players-text" scope="row"><%= players[j][0] %></th>
+                        <td class="players-text"><%= players[j][1] %></td>
                         </tr>
                     </tbody>
                 <% } %>

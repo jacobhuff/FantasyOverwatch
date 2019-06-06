@@ -5,17 +5,17 @@
     <table class="table table-active table-hover">
     <thead>
         <tr>
-        <th scope="col"><h5>League</h5></th>
-        <th scope="col"><h5>Team Name</h5></th>
-        <th scope="col"><h5>Record</h5></th>
-        <th scope="col"><h5>Rank</h5></th>
+        <th class="leagues-table-headers" scope="col"><h5>League</h5></th>
+        <th class="leagues-table-headers" scope="col"><h5>Team Name</h5></th>
+        <th class="leagues-table-headers" scope="col"><h5>Record</h5></th>
+        <th class="leagues-table-headers" scope="col"><h5>Rank</h5></th>
         </tr>
     </thead>
     <tbody>
     <% teams.forEach(function(team) { %>
       <form method="post" action="/league">
         <tr class="table-light">
-          <td>
+          <td class="leagues-table-text">
             <button class="open-league-button" type="submit" name="leagueName" value="<%= team.league %>">
               <%= team.league %>
               <% leagues.forEach(function(league) { %>
@@ -27,13 +27,13 @@
               <% }) %>
             </button>
           </td>
-          <td>
+          <td class="leagues-table-text">
               <%= team.name %>
           </td>
-          <td>
+          <td class="leagues-table-text">
               <%= team.record %>
           </td>
-          <td>
+          <td class="leagues-table-text">
               <%= team.rank %>
           </td>
         </tr>

@@ -148,8 +148,11 @@
     width: 80%;
     margin-bottom: 100px;
 }
-.matchup-text, .matchup-header {
+.matchup-text, .total-text, .matchup-header {
     text-align: center;
+}
+.total-text {
+    font-size: 16px;
 }
 .matchups-container {
     width: 80%;
@@ -159,5 +162,8 @@
 .your-team-matchup, .their-team-matchup {
     width: 50%;
     float: left;
+    text-align: center;
+}
+.standings-header, .standings-text {
     text-align: center;
 }

@@ -28,6 +28,15 @@ const TeamSchema = new mongoose.Schema({
     },
     players: {
         type: Array,
+    },
+    lineups: {
+        type: Array
+    },
+    pointsFor: {
+        type: Number
+    },
+    pointsAgainst: {
+        type: Number
     }
 });
 

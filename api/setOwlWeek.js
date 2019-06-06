@@ -34,8 +34,6 @@ module.exports = function () {
         } else {
             owlSchedule.findOneAndUpdate({}, {$set: {currentStage: currOwlStage, currentWeek: currOwlWeek}}, (err, doc) => {
                 if (err) { console.log(err) }
-
-                console.log("Current OWL Stage and Week updated");
             });
         }
     });

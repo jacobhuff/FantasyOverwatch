@@ -4,6 +4,24 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
 const path = require('path');
+const http = require('http');
+const updateMatchIds = require('./api/updateMatchIds.js');
+const updatePlayerStats = require('./api/updatePlayerStats.js');
+
+/////////////////////
+/* KEEP APP ONLINE */
+
+// setInterval(function() {
+//     http.get("https://<your app name>.herokuapp.com");
+
+//     // UPDATE PLAYER STATS
+//     updateMatchIds(updatePlayerStats);
+// }, 2700000);
+
+/* KEEP APP ONLINE */
+/////////////////////
+
+updateMatchIds(updatePlayerStats);
 
 require('dotenv').config();
 
@@ -58,11 +76,6 @@ app.use('/dashboard', require('./routes/dashboard.js'));
 app.use('/users', require('./routes/users.js'));
 app.use('/league', require('./routes/league.js'));
 app.use('/players', require('./routes/players.js'));
-
-// UPDATE PLAYER STATS
-const updateMatchIds = require('./api/updateMatchIds.js');
-const updatePlayerStats = require('./api/updatePlayerStats.js');
-updateMatchIds(updatePlayerStats);
 
 // const setOwlWeeks = require('./api/setOwlWeeks.js');
 // setOwlWeeks();

@@ -41,6 +41,8 @@ router.post('/create-league/', (req, res) => {
     var numTeams = 0;
     var id = crypto.randomBytes(10).toString('hex');
     var active = false;
+    var hasDrafted = false;
+    var results = [];
     const { name, password, password2 } = req.body;
     let errors = [];
 
@@ -81,7 +83,9 @@ router.post('/create-league/', (req, res) => {
                     password,
                     administrator,
                     id,
-                    active
+                    active,
+                    hasDrafted,
+                    results
                 });
 
                 bcrypt.genSalt(10, (err, salt) => {
